@@ -1,26 +1,32 @@
 import React from "react";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
+import Previewer from "./Previewer";
 
 class Editor extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            input: ""
+        }
+        this.typeChange = this.typeChange.bind(this);
+    };
+
+    typeChange(event) {
+        this.setState({
+            input: event.target.value
+        });
     }
     render() {
       return (
           <div className="editor">
-              <div className="editor_header"><i class="fa fa-free-code-camp" aria-hidden="true"></i> Editor</div>
-              <div className="editor_body">
-              We organise what we write into sentences and paragraphs. A paragraph 
-              begins on a new line within the text and there is often a blank line between 
-              paragraphs. A paragraph usually contains more than one sentence and it is 
-              usually about one topic.
-
-              The first sentence in a paragraph is sometimes called the key or topic 
-              sentence because it gives us the key to what the paragraph will be about. 
-              The other sentences usually relate to the key sentence. There is usually a 
-              conclusion in the final sentence of a paragraph and sometimes there is a 
-              link to the next paragraph.
+              <div className="editor_header">
+                  <div className="editor_header-left"><i className="fa fa-free-code-camp" aria-hidden="true"></i> Editor</div>
+                  <div className="editor_header-right"><i className="fa fa-arrows-alt" aria-hidden="true"></i></div>
               </div>
+              <textarea className="editor_body" value={this.state.input} onChange={this.typeChange}>
+              
+              </textarea>
+              <Previewer input={this.state.input} />
           </div>
       );
     }
