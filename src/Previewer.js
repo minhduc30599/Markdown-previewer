@@ -1,8 +1,6 @@
 import React from "react";
 import { marked } from "marked";
 
-let paragraph = require("marked");
-
 const Previewer = (props) => {
     return (
         <div className="previewer">
